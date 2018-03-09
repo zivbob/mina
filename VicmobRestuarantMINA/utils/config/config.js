@@ -1,1 +1,0 @@
-module.exports = {appId:"wx481e26ad3edd92b9",minaId:"u75bePmZ7Yn2OKRuGZiUBg==",minaNickName:""}
