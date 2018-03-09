@@ -1,0 +1,20 @@
+<view class='title'>wifi测试</view>
+<view class='wifiview'>
+  <button class='btn' bindtap='startWifi'>初始化wifi</button>
+  <button class='btn' bindtap='getWifi'>获取已连接wifi</button>
+  <view class='info'>
+    <text>wifi:{{mywifi.SSID}}</text>
+    <text>安全：{{mywifi.secure}}</text>
+    <text>强度：{{mywifi.signalStrength}}</text>
+  </view>
+  <button class='btn' bindtap='getList'>获取wifi列表</button>
+  <view class='info'>
+    <block wx:for='{{wifiList}}' wx:key='wifi'>
+      <view class='listInfo'>
+        <text>{{item.SSID}}</text>
+        <text>{{item.secure}}</text>
+        <text>{{item.signalStrength}}</text>
+      </view>
+    </block>
+  </view>
+</view>

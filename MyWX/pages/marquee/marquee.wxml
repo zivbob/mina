@@ -1,0 +1,29 @@
+<view>css3 + animation跑马灯</view>
+
+<view class="marquee">
+    <view class="content">
+        <view class='item'><icon type='success'></icon><text>三生三世</text><text style="display: inline-block; width: 5em;"></text></view>
+        <view class='item'><icon type='success'></icon><text>分试试式</text><text style="display: inline-block; width: 5em;"></text></view>
+    </view>
+</view>
+
+<view class='squre'>
+  <view class='squre2'></view>
+</view>
+
+<view class='round'></view>
+
+<view class='round2'></view>
+
+<view class='taiji'>
+  <view class='out left'>
+    <view class='little white'></view>
+  </view>
+  <view class='out right'>
+    <view class='little black'></view>
+  </view>
+</view>
+
+<view class='box'>
+  
+</view>

@@ -1,0 +1,5 @@
+<view>
+  <picker class='picker' model='selector' range='{{age}}' value='{{index}}'>
+    <view class='content'>选择：{{age[index]}}</view>
+  </picker>
+</view>

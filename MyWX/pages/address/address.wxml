@@ -1,0 +1,4 @@
+<view>
+  <button bindtap='address'>address</button>
+  <view>{{address}}</view>
+</view>

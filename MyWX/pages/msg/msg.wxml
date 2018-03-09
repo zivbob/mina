@@ -1,0 +1,4 @@
+<view>
+  <button open-type='contact'>访问客服</button>
+  <contact-button size='20' session-from='msg'></contact-button>
+</view>

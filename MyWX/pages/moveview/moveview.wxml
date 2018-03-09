@@ -1,0 +1,38 @@
+<view class='contain'>
+  <view class='btn' bindtap='model'></view>
+  <block wx:if='{{flag}}'>
+    <view class='frog' bindtap='hide'></view>
+  </block>
+  <view class='test ccc' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test ccc' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test ccc' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test ccc' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <view class='test' bindtap='tapView'></view>
+  <movable-area class='moveBox'>
+    <movable-view direction='all' out-of-bounds='true' y='-100' damping='10' class='move'></movable-view>
+    <movable-view direction='vertical' class='move col'></movable-view>
+    <view class='textBox'></view>
+  </movable-area>
+</view>

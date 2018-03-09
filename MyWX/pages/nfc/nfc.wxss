@@ -1,0 +1,28 @@
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #fe3c27;
+}
+
+.nfcview {
+  margin-top: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  width: 320rpx;
+  background-color: #f61;
+  color: #fff;
+}
+.info {
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: center;
+  font-size: 30rpx;
+  color: #888888;
+}

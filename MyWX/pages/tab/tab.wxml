@@ -1,0 +1,30 @@
+<view class='container'>
+  <scroll-view scroll-x>
+    <view class='top'>
+      <view class='item {{current == 0 ? "active":""}}' data-current='0' bindtap='changeTab'>table1</view>
+      <view class='item {{current == 1 ? "active":""}}' data-current='1' bindtap='changeTab'>table2</view>
+      <view class='item {{current == 2 ? "active":""}}' data-current='2' bindtap='changeTab'>table3</view>
+      <view class='item {{current == 3 ? "active":""}}' data-current='3' bindtap='changeTab'>table4</view>
+      <view class='item'>table4</view>
+      <view class='item'>table4</view>
+      <view class='item'>table4</view>
+      <view class='item'>table4</view>
+      <view class='item'>table4</view>
+    </view>
+  </scroll-view>
+  
+  <swiper class='content' current='{{current}}' bindchange='tabchange'>
+    <swiper-item class='table'>
+      <scroll-view class='action' scroll-y='true'>
+        <button class='btn' bindtap='del'>删除</button>
+        <button class='btn' bindtap='change'>修改</button>
+        <block wx:for='{{info}}' wx:key='info'>
+          <view>{{item}}</view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class='table'><view>table2</view></swiper-item>
+    <swiper-item class='table'><view>table3</view></swiper-item>
+    <swiper-item class='table'><view>table4</view></swiper-item>
+  </swiper>
+</view>

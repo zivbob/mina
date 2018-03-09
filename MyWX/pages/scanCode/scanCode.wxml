@@ -1,0 +1,5 @@
+<view class='contain'>
+  <button class='btn' bindtap='scan'>点击扫码</button>
+  <view class='info'>{{info}}</view>
+  <button class='btn' bindtap='jump'>跳转</button>
+</view>

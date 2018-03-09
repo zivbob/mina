@@ -1,0 +1,10 @@
+<view class='title'>nfc测试</view>
+<view class='nfcview'>
+  <view class='info'>{{direction}}</view>
+  <button class='btn' bindtap='testState'>nfc状态</button>
+  <view class='info'>{{stateMsg}}</view>
+  <button class='btn' bindtap='initNfc'>初始化nfc</button>
+  <view class='info'>{{initMsg}}</view>
+  <button class='btn' bindtap='getSys'>获取本机</button>
+  <button class='btn' bindtap='addSth'>添加联系人</button>
+</view>

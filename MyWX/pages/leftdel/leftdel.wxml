@@ -1,0 +1,10 @@
+<view class='container'>
+  <view class='bar'>
+    <block wx:for='{{info}}' wx:key='info'>
+      <view id='{{item.id}}' class='info' animation='{{item.animate}}' bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
+        <view>{{item.info}}</view>
+      </view>
+      <view class='del' bindtap='del'>删除</view>
+    </block>
+  </view>
+</view>
