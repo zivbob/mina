@@ -1,0 +1,205 @@
+<view class="container">
+  <!-- 标题导航 -->
+  <view id="nearby" class="section section-big nearby">
+    <view class="filters">
+      <view class="filter {{filterId==1?'active':''}}" data-id="1" bindtap="tapFilter">商品
+      </view>
+      <!-- <text style="color:#989898;line-height:80rpx;font-weight:100">|</text> -->
+      <!-- <view class="filter {{filterId==2?'active':''}}" data-id="2" bindtap="tapFilter">评价
+      </view> -->
+      <!-- <text style="color:#989898;line-height:80rpx;font-weight:100">|</text> -->
+      <view class="filter {{filterId==3?'active':''}}" data-id="3" bindtap="tapFilter">商家
+      </view>
+    </view>
+  </view>
+
+  <!-- 中间页面 -->
+  <view class="content-container">
+    <block wx:if="{{goodsList.length==0}}">
+      <view class="ordernone1">暂无推荐商品（⊙o⊙）</view>
+    </block>
+    <block wx:else>
+      <!-- 左边物品分类 -->
+      <scroll-view class="classify-container" scroll-y="true">
+        <view class="classify {{classifySeleted==classify.goodsCategorysId?'active':''}}" wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" data-id="{{classify.goodsCategorysId}}" data-title="{{classify.title}}" data-array="{{classify.goodsIdCollection}}"
+          bindtap="tapClassify">
+          <view class="name">{{classify.title}}</view>
+        </view>
+      </scroll-view>
+      <!-- 物品列表 -->
+      <scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}">
+        <block class="goods" wx:for="{{goods}}" wx:for-item="item" wx:key="id">
+          <block wx:if="{{item.cid==classifySeleted}}">
+            <!-- <block wx:if="{{!noGoods}}"> -->
+              <view class="goods">
+                <view class="pic" bindtap="goodsDet" data-id="{{item.goodsId}}" style="background-image: url('{{item.thumb}}');">
+                  <view style="background-color:#feb70f;color:#FFF;font-size:20rpx;width:45rpx;line-height:25rpx">{{item.label}}</view>
+                </view>
+                <view class="name ellipsis">{{item.title}}</view>
+                <view class="sold">月售{{item.sailed}} 好评98%</view>
+                <view class="price">
+                  <view>
+                    <block wx:if="{{item.discountPrice==0||item.discountPrice==null||item.discountPrice=='null'||item.discountPrice==''}}">
+                      ¥{{item.price}}
+                      <block wx:if="{{item.isOptions==1}}">
+                        <text style="font-size:19rpx;">起</text>
+                      </block>
+                    </block>
+                    <block wx:else>
+                      ¥{{item.discountPrice}}
+                      <text style="font-size:20rpx;color:grey;text-decoration:line-through;"> ¥{{item.price}}</text>
+                    </block>
+                  </view>
+                  <block wx:if="{{item.isOptions==1}}">
+                    <!--选规格-->
+                    <view data-goodsId="{{item.goodsId}}" bindtap="showGoodsDetail">
+                      <image src='../../imgs/index/xgg.png' style='width:100rpx;height:40rpx;'></image>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view class="addCartModal addCart">
+                      <view class="add" data-id="{{item.goodsId}}" bindtap="tapAddCart">
+                        <image src='../../imgs/index/add.png' style='width:44rpx;height:44rpx;'></image>
+                      </view>
+                      <block wx:if="{{cart.list[item.goodsId]!=null&&cart.list[item.goodsId]!='null'&&cart.list[item.goodsId]!=''}}">
+                        <view class="num">{{cart.list[item.goodsId]}}</view>
+                        <view class="reduce" data-id="{{item.goodsId}}" bindtap="tapReduceCart">
+                          <image src='../../imgs/index/reduce.png' class="reduceNext" style='width:44rpx;height:44rpx;'></image>
+                        </view>
+                      </block>
+                    </view>
+                  </block>
+                </view>
+              </view>
+            <!-- </block> -->
+            <!-- <block wx:if="{{noGoods}}">
+            <text>faafa</text>
+            </block> -->
+          </block>
+        </block>
+      </scroll-view>
+    </block>
+    <!-- 物品列表结束 -->
+  </view>
+
+  <!-- 可选规格的modal弹出框 start
+  <!--goodsdetail start -->
+  <view class="goods-container">
+    <view class="goods-detail" hidden="{{!showGoodsDetail}}">
+      <view class="mask" bindtap="hideGoodsDetail"></view>
+      <view class="goodsdetail">
+        <view style=" display: flex;flex-direction: column;">
+          <view class="name11 ellipsis ellip1">{{goodsType[showInfo[0]].goodsName}}</view>
+          <view bindtap='closeGoodsDetails'>
+            <image class='guigePic' src='../../imgs/index/close.png'></image>
+          </view>
+        </view>
+        <view class="name22">规格：</view>
+        <view class="goods">
+          <view class="goodsGuige">
+            <block wx:for="{{showInfo}}" wx:key="id" wx:for-index="index" wx:for-item="item">
+              <view class="priceTip">
+                <block wx:if="{{cart.list[item]!=null&&cart.list[item]!=''}}">
+                  <view class="goodsType name ellipsis {{goodsTypeSelected==item?'active':''}}" data-item="{{item}}" data-index="{{index}}" bindtap='guige'>{{goodsType[item].name}}</view>
+                </block>
+                <block wx:else>
+                  <view class="goodsType name ellipsis {{goodsTypeSelected==item?'active':''}}" data-item="{{item}}" data-index="{{index}}" bindtap='guige'>{{goodsType[item].name}}</view>
+                </block>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class='guigeprice'>
+          <view class='guigepricetext'>¥{{goodsTypepPrice.price}}
+            <text>({{goodsTypepPrice.name}})</text>
+          </view>
+          <block wx:if="{{cart.list[goodsTypepNum]==null || cart.list[goodsTypepNum]==''}}">
+            <image src='../../imgs/index/addcart.png' bindtap='tapAddCart' data-id="{{goodsTypepNum}}"></image>
+          </block>
+          <block wx:else>
+            <view class='addandreduce addCart1'>
+              <view class="reduce" data-id="{{goodsTypepNum}}" bindtap="tapReduceCart">
+                <image src='../../imgs/index/reduce.png' style='width:38rpx;height:38rpx;'></image>
+              </view>
+              <view class="num" style=''>{{cart.list[goodsTypepNum]}}</view>
+              <view class="add" data-id="{{goodsTypepNum}}" bindtap="tapAddCart">
+                <image src='../../imgs/index/add.png' style='width:38rpx;height:38rpx;'></image>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 可选规格的modal弹出框 结束 -->
+
+  <!-- 购物车 -->
+  <view class="cart-detail" wx:if="{{showCartDetail&&cart.count}}">
+    <view class="mask" bindtap="hideCartDetail"></view>
+    <view class="list">
+      <view class="carttit">
+        <view class="carttit0">购物车</view>
+        <view class="cartempty" bindtap="clearcart" wx:key="empty">
+          <image src="/imgs/index/del.jpg" class="cartimg"></image>清空</view>
+      </view>
+      <view class="carttxt">
+        <view class="carttxt0">满减</view>
+        <view class="carttxt1">订单满{{storeMe.sendPrice}}元起送 \ 满{{storeMe.deliveryFreePrice}}元免配送费</view>
+      </view>
+      <scroll-view scroll-y style="height: 250px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <block wx:for="{{cart.list}}" wx:for-index="id" wx:for-item="num" wx:key="id">
+          <!-- <block wx:for="{{showCart}}" wx:for-item="item" wx:for-index="index" wx:key="index"> -->
+          <block wx:if="{{goodsType[id].goodsOptionsId!=null&&goodsType[item].goodsOptionsId!='null'&&goodsType[item].goodsOptionsId!=''}}">
+            <view class="item">
+              <view class="name ellipsis">{{goodsType[id].goodsName}}
+                <text style="color:red;font-size:23rpx;"> ({{goodsType[id].name}})</text>
+              </view>
+              <view class="total">¥{{goodsType[id].price*cart.list[id]}}</view>
+              <view class="reduce" data-id="{{id}}" bindtap="tapReduceCart">-</view>
+              <view class="num">{{cart.list[id]}}</view>
+              <view class="add" data-id="{{id}}" bindtap="tapAddCart">+</view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="item">
+              <view class="name ellipsis">{{goods[id].title}}</view>
+              <view wx:if="{{goods[id].discountPrice==0||goods[id].discountPrice==null||goods[id].discountPrice=='null'}}" class="total">¥{{goods[id].price*cart.list[id]}}</view>
+              <view wx:else class="total">¥{{goods[id].discountPrice*cart.list[id]}}</view>
+              <view class="reduce" data-id="{{id}}" bindtap="tapReduceCart">
+                <text class="reduceNext">-</text>
+              </view>
+              <view class="num">{{cart.list[id]}}</view>
+              <view class="add" data-id="{{id}}" bindtap="tapAddCart">
+                <text>+</text>
+              </view>
+            </view>
+
+          </block>
+          <!-- </block> -->
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="cart">
+    <view class="data" bindtap="showCartDetail">
+      <view class="icon">
+        <image src="/imgs/index/gwc.png"></image>
+        <block wx:if="{{cart.count > 0}}">
+          <view class="count">{{cart.count}}</view>
+        </block>
+      </view>
+      <view class="total">
+        <text style='color:rgb(102,102,102)'>合计：</text>¥{{cart.total}}
+        <block wx:if="{{cart.total<storeMe.deliveryFreePrice}}">
+          <text style='color:rgb(102,102,102)'>(另需配送费￥{{storeMe.deliveryPrice}})</text>
+        </block>
+        <block wx:else>
+          <text style='color:rgb(102,102,102)'>(另需配送费￥0)</text>
+        </block>
+      </view>
+    </view>
+    <form bindsubmit="submit" report-submit="true">
+      <button class="yellow {{cart.count?'':'disabled'}}" formType="submit" disabled="{{!cart.count}}">去结算</button>
+    </form>
+  </view>
+</view>

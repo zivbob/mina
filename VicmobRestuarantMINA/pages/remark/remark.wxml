@@ -1,0 +1,12 @@
+<!--remark.wxml-->
+<!--用户反馈-->
+<form bindsubmit="onSubmit" bindreset="">
+  <view class="container">
+    <view class='row text_box'>
+      <textarea class='text' name="content" value="{{content}}" maxlength="20" placeholder="请输入您的备注(如：不吃辣...) 注：字数不超过20字" />
+    </view>
+    <view class='row btn_box'>
+      <button formType="submit" class='submit'>提交备注</button>
+    </view>
+  </view>
+</form>

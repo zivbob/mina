@@ -1,0 +1,149 @@
+<!--restuantantDetail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<block wx:if="{{flag==1}}">
+  <view class="container">
+    <!--轮播图-->
+    <view scroll-y="true">
+      <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="500">
+        <block wx:for="{{banners}}" wx:key="id">
+          <swiper-item>
+            <image bindtap="" data-id="{{index}}" src="{{item.img}}" />
+          </swiper-item>
+        </block>
+      </swiper>
+
+      <!-- <view class="list">
+        <view class="item">
+          <image src="../../imgs/images/service.png" />商家服务
+        </view>
+      </view> -->
+      <view class="navibtns navibtns-navibtns">
+        <view class="navi-item navibtns-navi-item" bindtap="tapWaimai">
+          <view class="navi-img">
+            <image src="../../imgs/shop/wm.png" style="width: 70%;height: 70%;" />
+          </view>
+          <!-- <text>点外卖</text> -->
+        </view>
+        <view class="navi-item navibtns-navi-item" bindtap="tapWaimai">
+          <view class="navi-img">
+            <image src="../../imgs/shop/ts.png" style="width: 70%;height: 70%;" />
+          </view>
+          <!-- <text>堂食</text> -->
+        </view>
+        <view class="navi-item navibtns-navi-item" bindtap="tapWaimai">
+          <view class="navi-img">
+            <image src="../../imgs/shop/hao.png" style="width: 70%;height: 70%;" />
+          </view>
+          <!-- <text>排号</text> -->
+        </view>
+        <view class="navi-item navibtns-navi-item" bindtap="tapWaimai">
+          <view class="navi-img">
+            <image src="../../imgs/shop/yd.png" style="width: 70%;height: 70%;" />
+          </view>
+          <!-- <text>预定</text> -->
+        </view>
+      </view>
+
+      <!-- <view class="wxk-pic-word">
+        <image class="wxk-cover" src="{{shop.logo}}" />
+        <view class="wxk-content">
+          <view class="wxk-title">{{shop.title}}</view>
+          <view class="wxk-middle">好评率98%</view>
+          <view class="wxk-prize">已售：
+            <text style="color:red;">{{shopAccount}}</text>份</view>
+        </view>
+        <view class="wxk-right">
+          <view class="wxk-tit"></view>
+        </view>
+      </view> -->
+      <view class='md'>
+        <view class="wxk-content">
+          <view class="wxk-title">{{shop.title}}</view>
+          <view class="wxk-middle">
+            <image style="width:28rpx;height:28rpx;" src='../../imgs/shop/xx_1.png'></image>
+            <image style="width:28rpx;height:28rpx;" src='../../imgs/shop/xx_1.png'></image>
+            <image style="width:28rpx;height:28rpx;" src='../../imgs/shop/xx_1.png'></image>
+            <image style="width:28rpx;height:28rpx;" src='../../imgs/shop/xx_1.png'></image>
+            <image style="width:28rpx;height:28rpx;" src='../../imgs/shop/xx_2.png'></image>
+            <text style='margin-left:10rpx;color:rgb(253,97,50)'>4.9分</text>
+            <text style='margin-left:30rpx;color:rgb(136,136,136)'>人均:￥89</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="money-list">
+        <view class="money-item">起送价
+          <text style='color:rgb(253,97,50)'>¥{{shop.sendPrice}}</text>
+        </view>
+        <view style="width:2%;font-size: 25rpx;color:rgb(231,231,231);margin-top:-6rpx;">|</view>
+        <view class="money-item">配送
+          <text style='color:rgb(253,97,50)'>¥{{shop.deliveryPrice}}</text>
+        </view>
+        <view style="width:2%;font-size: 25rpx;color:rgb(231,231,231);margin-top:-6rpx;">|</view>
+        <view class="money-item">送达时长{{shop.deliveryTime}}分钟</view>
+      </view>
+
+
+      <view class="list">
+        <view class="item">
+          <image src="../../imgs/shop/yy.png" />营业时间：
+          <block wx:for="{{shop.businessHours}}" wx:for-item="item" wx:key="id">
+            <block wx:if="{{index == shop.businessHours.length-1 || shop.businessHours.length == 1}}">
+              {{item.start}}~{{item.end}}
+            </block>
+            <block wx:else>
+              {{item.start}}~{{item.end}};
+            </block>
+          </block>
+        </view>
+        <view class="item">
+          <image src="../../imgs/shop/dz.png" />商家地址：{{shop.address}}
+        </view>
+        <view class="item" bindtap="telephone">
+          <image src="../../imgs/shop/phone.png" />联系电话：{{shop.telephone}}
+        </view>
+        <!-- <view class="item">
+          <image src="../../imgs/images/gonggao.png" />店面公告：
+          <view class="wxParse" style='margin-left:32rpx;'>
+            {{shop.notice}}
+          </view>
+        </view> -->
+        <!-- <view class="item">
+          <image src="../../imgs/images/tese.png" />门店特色：
+          <view class="wxParse" style='margin-left:32rpx;'>
+            <template is="wxParse" data="{{wxParseData:description.nodes}}" />
+          </view>
+        </view> -->
+      </view>
+      <view class="dmhj">店面环境
+        <view class='dmhj1'>
+          <block wx:if="{{bannersCustomPic.length == 0}}">
+            <view class='custompic'>
+              <image src='../../imgs/index/banner_1.jpg' class='hj1'></image>
+            </view>
+          </block>
+          <block wx:else>
+            <block wx:for="{{bannersCustomPic}}" wx:key="id">
+              <view class='custompic'>
+                <image src='{{item.img}}' class='hj1'></image>
+              </view>
+            </block>
+          </block>
+        </view>
+      </view>
+
+      <!-- <view class="list">
+        <view class="item">
+          <image src="../../imgs/images/peisong.png" />优惠减免：满{{shop.deliveryFreePrice}}元，免运送费
+        </view>
+      </view>
+
+      <view class="list">
+        <view class="item" bindtap="tapWaimai">
+          <image src="../../imgs/images/zhifu.png" />支付方式：支持在线支付
+          <text class="jump">〉</text>
+        </view>
+      </view> -->
+    </view>
+  </view>
+</block>

@@ -1,0 +1,403 @@
+page {
+  height: 100%;
+  font-family: "PingFang SC";
+}
+
+.container {
+  height: 100%;
+}
+
+.header.scrolled {
+  background: rgb(253, 98, 51);
+}
+
+.header {
+  display: -webkit-flex;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 18rpx;
+  box-sizing: border-box;
+  z-index: 1;
+  -webkit-transition: background 0.5s ease-in-out;
+}
+
+.header .icon {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: top;
+}
+
+.header .location {
+  color: #fff;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  min-width: 200rpx;
+  max-width: 250rpx;
+  padding: 10rpx 10rpx 10rpx 0rpx;
+  border-radius: 30rpx;
+  background: rgba(0, 0, 0, 0.3);
+  margin-right: 20rpx;
+  vertical-align: middle;
+}
+
+.header .search {
+  -webkit-flex: 1;
+  color: #888;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  padding: 10rpx;
+  border-radius: 30rpx;
+  background: #fff;
+  /*border-bottom: 1rpx solid #aaa;*/
+}
+
+.banner {
+  height: 300rpx;
+}
+
+.banner image {
+  width: 100%;
+  height: 100%;
+}
+
+.icons {
+  height: 181rpx;
+}
+
+.icons swiper-item {
+  width: 100%;
+  /*display: -webkit-flex;*//*flex-direction: row;*//*flex-wrap: wrap;*//*justify-content: center;*/
+}
+
+.icons .icon {
+  float: left;
+  display: -webkit-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 200rpx;
+  width: 25%;
+  text-align: center;
+  margin: 16rpx 0;
+}
+
+.icons .icon image {
+  margin: 0 auto;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.icons .icon text {
+  color: #000;
+  font-size: 26rpx;
+  line-height: 2;
+}
+
+.icons .icon text.active {
+  color: #fd6233;
+}
+
+.section-big {
+  padding: -1rpx;
+}
+
+.section-big .title {
+  position: relative;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: bold;
+  line-height: 2;
+  height: 80rpx;
+}
+
+.section-big .title:before {
+  content: " ";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -210rpx;
+  width: 100rpx;
+  height: 1rpx;
+  background: #000;
+}
+
+.section-big .title:after {
+  content: " ";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: 110rpx;
+  width: 100rpx;
+  height: 1rpx;
+  background: #000;
+}
+
+.discount .content {
+  width: 100%;
+  height: 450rpx;
+}
+
+.preferred .content {
+  width: 100%;
+  height: 556rpx;
+}
+
+.special .content {
+  width: 100%;
+  height: 181rpx;
+}
+
+.nearby {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.nearby .filters {
+  display: -webkit-flex;
+  border-bottom: 1rpx solid #efefef;
+}
+
+.nearby .filters .filter {
+  -webkit-flex: 1;
+  text-align: center;
+  color: #353535;
+  font-size: 30rpx;
+  line-height: 3;
+}
+
+.nearby .filters .filter .v {
+  display: none;
+}
+
+.nearby .filters .filter.active {
+  color: #fd6233;
+}
+
+.nearby .filters .filter.active .v {
+  display: inline-block;
+}
+
+.nearby .shop {
+  padding: 2rpx 0;
+  border-bottom: 1rpx solid #efefef;
+}
+
+.nearby .shop image {
+  width: 100%;
+  height: 266rpx;
+}
+
+.loading {
+  text-align: center;
+  line-height: 2;
+  margin-bottom: 20rpx;
+  font-size: 22rpx;
+  color: #696969;
+}
+
+.store-intro {
+  padding: 10rpx 20rpx;
+  background-color: #fff;
+  border-bottom: solid #e8e8e8 3rpx;
+}
+
+.store-pic-name {
+  display: flex;
+  align-items: center;
+}
+
+.store-name {
+  margin-right: 50rpx;
+  padding: 20rpx 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  color: #222;
+}
+
+.store-status {
+  flex-shrink: 0;
+  margin-left: 8rpx;
+  border: solid #25ae5f 3rpx;
+  border-radius: 4px;
+  font-size: 24rpx;
+  color: #25ae5f;
+  padding: 3rpx 4rpx;
+}
+
+.store-status.green {
+  color: #25ae5f;
+  border-color: #25ae5f;
+}
+
+.store-status.gray {
+  color: #ccc;
+  border-color: #ccc;
+}
+
+.btn-more-store {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  padding-right: 0;
+  color: #999;
+  font-size: 30rpx;
+}
+
+.btn-more-store .icon {
+  font-size: 24rpx;
+}
+
+.btn-show-discount {
+  flex: 0 0 45rpx;
+  color: #666;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.banner image {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  font-family: "PingFang SC";
+}
+
+.wxk-pic-word {
+  display: flex;
+  flex-flow: row;
+  background-color: #fff;
+  height: auto;
+  margin-bottom: 14rpx;
+}
+
+.wxk-cover {
+  margin-top: 26rpx;
+  margin-left: 20rpx;
+  width: 150rpx;
+  height: 130rpx;
+}
+
+.count {
+  position: absolute;
+  margin-top: 12rpx;
+  margin-left: -14rpx;
+  font-size: 24rpx;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  padding: 0 11rpx;
+  line-height: 39rpx;
+  color: #fff;
+  background: #f45044;
+  border-radius: 32rpx;
+}
+
+.wxk-content {
+  width: 48%;
+  height: auto;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  margin-left: 28rpx;
+}
+
+.wxk-title {
+  width: 100%;
+  font-size: 31rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 26rpx;
+  font-weight: bold;
+}
+
+.wxk-prize {
+  font-size: 20rpx;
+  overflow: hidden;
+  margin-top: 11rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #747474;
+}
+
+.wxk-bottom {
+  font-size: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 11rpx;
+  color: #747474;
+}
+
+.wxk-right {
+  width: 32%;
+  height: auto;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  margin-right: 17rpx;
+}
+
+.wxk-tit {
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 42rpx;
+}
+
+.wxk-pri {
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  align-items: center;
+  margin-top: 5rpx;
+}
+
+.wxk-pic {
+  width: 34rpx;
+  height: 34rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.wxk-text-item {
+  width: 450rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 21rpx;
+  overflow: hidden;
+  margin-left: 10rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.money-list {
+  display: flex;
+  flex-flow: row;
+  background-color: #fff;
+}
+
+.money-item_left {
+  font-size: 21rpx;
+  width: 45%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: center;
+  margin-right: 16rpx;
+}
+
+.money-item_right {
+  font-size: 21rpx;
+  width: 45%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: center;
+  margin-left: 16rpx;
+}

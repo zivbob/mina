@@ -1,0 +1,26 @@
+<!--platformDetail.wxml-->
+<view class="container">
+  <view scroll-y="true">
+    <view class="platformImage">
+      <image src="{{platformDetail.thumb}}"></image>
+    </view>
+    <view class="list">
+      <view class="item">
+        <image src="../../imgs/shop/store.png" />商家： {{platformDetail.title}}
+      </view>
+      <view class="item" bindtap="telephone">
+        <image src="../../imgs/shop/phone.png" />电话： {{platformDetail.mobile}}
+      </view>
+      <view class="item1">
+        <image src="../../imgs/shop/jian.png" />
+        <text style='width:220rpx'>简介： </text>
+        <view class='platformContent'>
+          {{platformDetail.content}}
+        </view>
+      </view>
+      <view style='margin:20rpx;height:164rpx;'>
+        <image src='{{platformDetail.thumb}}' class='img'></image>
+      </view>
+    </view>
+  </view>
+</view>

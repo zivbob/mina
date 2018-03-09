@@ -1,0 +1,82 @@
+<!--订单列表-->
+<view class="container">
+  <block wx:if="{{showOrder}}">
+    <view wx:if="{{!hasOrder}}">
+      <view class="ordernone">
+        <image class="search_no" src="../../imgs/images/search_no.png"></image>
+      </view>
+      <view class="ordernone1">
+        <text>还没有订单/(ㄒoㄒ)/~~，现在去下一单吧</text>
+      </view>
+      <button class="nowbutton" hover-class="button-hover" bindtap="toIndex">现在点一份</button>
+    </view>
+    <view wx:else>
+      <!--订单列表-->
+      <view class="orderlist">
+        <block wx:for="{{orderlist}}" wx:for-index="index" wx:for-item="num" wx:key="id">
+          <view class="orderli">
+            <view class="orderlitop" data-id="{{num.orderId}}">
+              <view class='orderlitopleft' data-id='{{num.sid}}' bindtap='goStore'>
+                <image class="logo1" src="../../imgs/index/store.png"></image>
+                <view class="orderlitopleft">
+                  <view class="orderlitit">{{num.storeName}}</view>
+                </view>
+                <image class="logo2" src="../../imgs/order/go.png"></image> 
+              </view>
+              <view style="margin-right: 20rpx;color: #FD6233;" data-id="{{num.orderId}}" bindtap="toOrderDetail">
+                <view wx:if="{{num.orderStatus == '0'}}" class="orderlibottomright">订单待支付</view>
+                <view wx:elif="{{num.orderStatus == '1'}}" class="orderlibottomright">订单已取消</view>
+                <view wx:elif="{{num.orderStatus == '2'}}" class="orderlibottomright">订单已超时</view>
+                <view wx:elif="{{num.orderStatus == '3'}}" class="orderlibottomright">订单待收货</view>
+                <view wx:elif="{{num.orderStatus == '4'}}" class="orderlibottomright">订单已完成</view>
+                <view wx:elif="{{num.orderStatus == '5'}}" class="orderlibottomright">订单退款中</view>
+                <view wx:elif="{{num.orderStatus == '6'}}" class="orderlibottomright">退款失败，等待收货</view>
+                <view wx:else class="orderlibottomright">订单退款成功</view>
+              </view>
+            </view>
+            <view class="orderlimiddle" data-id="{{num.orderId}}" bindtap="toOrderDetail">
+              <image class="logo" src="{{logo[index]}}"></image> 
+              <view class="orderlileft">
+                <view class="orderlitit1">{{num.goodsDetails[0].name}}等{{num.goodsDetails.length}}件商品</view>
+                <view class="orderlitit2">{{num.orderTime}}</view>
+              </view>
+              <view class="orderliright">     
+                  ¥{{num.actuallyMoney}}
+              </view>
+            </view>
+            <view class="orderlibottom">
+              <view wx:if="{{num.orderStatus==0}}" class="orderButton" data-id="{{num.orderId}}" bindtap="toPay" style="border:none;background-color:#FD6132;color:white;">立即支付</view>
+              <view wx:if="{{num.orderStatus==0}}" class="orderButton" data-id="{{num.orderId}}" bindtap="cancelOrder">取消订单</view>
+              <view wx:if="{{num.orderStatus==1||num.orderStatus==2||num.orderStatus==4||num.orderStatus==7}}" class="orderButton" bindtap="toIndex">再来一单</view>
+              <view wx:if="{{num.orderStatus==3 ||num.orderStatus==6}}" class="orderButton" data-id="{{num.orderId}}" data-phone="{{num.storePhoneNumber}}" bindtap="tapRefund" style="border:none;background-color:#FD6132;color:white;">申请退款</view>
+              <view wx:if="{{num.orderStatus==3||num.orderStatus==6}}" class="orderButton" data-id="{{num.orderId}}" bindtap="tapOrderOk">确认收货</view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{orderExceptions}}">
+    <view class="ordernone">
+      <image class="search_no" src="../../imgs/images/search_no.png"></image>
+    </view>
+    <view class="ordernone1">
+      <text>没有可用订单/(ㄒoㄒ)/~~,刷新试试</text>
+    </view>
+  </block>
+  <view wx:if="{{showModel}}" class="boss">
+    <view class="model">
+      <view class="inner">
+      <view wx:if="{{showModelFlag==1}}" class="inner-title">您取消的原因是：</view>
+      <view wx:else class="inner-title">您申请退款的原因是：</view>
+      <view class="inner-input">
+        <input bindinput="getInputValue" placeholder="请输入您的退款原因" />
+      </view>
+      <view class="inner-menu">
+        <view class="no" bindtap="quxiao">取消</view>
+        <view class="ok" bindtap="queding">确定</view>
+      </view>
+      </view>
+    </view>
+  </view>
+</view>

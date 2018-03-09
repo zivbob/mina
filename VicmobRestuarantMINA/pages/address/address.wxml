@@ -1,0 +1,46 @@
+<!--address.wxml-->
+<!--地址管理-->
+<radio-group class="radio-group" style="margin-bottom:100rpx;">
+  <view hidden="{{hiddenAddress}}" class="address" wx:for="{{allAddress}}" wx:key="id">
+    <view class="address-icon" data-id="{{index}}" bindtap="addressChange">
+      <radio checked="{{index==radioindex?true:false}}" value="{{index}}" color='#FD6233' />
+    </view>
+    <view class="address-detail">
+      <view bindtap="addressChange" data-id="{{index}}">
+        <view class="address-name-phone">
+          <block wx:if="{{item.sex == 1}}">
+            <text class="address-name">{{item.contactMan}} 女士</text>
+          </block>
+          <block wx:else>
+            <text class="address-name">{{item.contactMan}} 男士</text>
+          </block>
+          <text class="address-phone">{{item.contactWay}}</text>
+        </view>
+        <!-- <block wx:if="item.province==null && item.province==''">
+          <view class="address-info">{{item.deliveryAddress}}</view>
+        </block>
+        <block wx:else> -->
+          <view class="address-info">{{item.province+item.city+item.country+item.deliveryAddress}}</view>
+        <!-- </block> -->
+      </view>
+      <view class="address-edit">
+        <view>
+          <icon></icon>
+          <text hidden="{{index==radioindex?false:true}}">默认</text>
+        </view>
+        <view>
+          <text data-id="{{index}}" bindtap="editAddress">编辑</text>
+          <text> | </text>
+          <text data-id="{{index}}" bindtap="delAddress">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</radio-group>
+<view class='address-add' catchtap='addAddress'>添加地址</view>
+<!-- <navigator url="../addAddress/addAddress">
+  <view hidden="{{hiddenAddress}}" class="add-address">
+    <view class="lable" style="margin-left:10rpx;">新增地址</view>
+    <text class="jump">〉</text>
+  </view>
+</navigator> -->

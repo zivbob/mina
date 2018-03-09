@@ -1,0 +1,225 @@
+.pages4 {
+  font-family: "PingFang SC";
+}
+
+.pages4 .maps {
+  width: 100%;
+  height: 360rpx;
+  overflow: hidden;
+}
+
+.pages4 .tffic-list {
+  height: 140rpx;
+  display: flex;
+}
+
+.pages4 .tffic-list:last-child {
+  border-bottom: none;
+}
+
+.pages4 .logbx image {
+  width: 72rpx;
+  height: 72rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  vertical-align: middle;
+}
+
+.pages4 .logbx {
+  width: 100rpx;
+  vertical-align: middle;
+}
+
+.pages4 .descbx {
+  width: 750rpx;
+}
+
+.pages4 .infobx {
+  width: 207rpx;
+  padding-right: 35rpx;
+  text-align: right;
+}
+
+.pages4 .tffic-list .tps {
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 34rpx;
+  margin-left: 15rpx;
+  vertical-align: middle;
+}
+
+.pages4 .tffic-list .minf {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.section {
+  margin-top: 10rpx;
+  max-height: 110rpx;
+}
+
+.xxx {
+  width: 50rpx;
+  height: 50rpx;
+  align-items: flex-end;
+  margin-right: 20rpx;
+  vertical-align: middle;
+  margin-top: 32rpx;
+}
+
+.container {
+  font-family: "Microsoft Yahei", 微软雅黑, "Helvetica Neue", Arial, sans-serif;
+}
+
+.nearby {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.nearby .filters {
+  display: -webkit-flex;
+  border-top: 1rpx solid #efefef;
+}
+
+.wxk-pic-word {
+  display: flex;
+  flex-flow: row;
+  background-color: #fff;
+  height: auto;
+  margin-bottom: 14rpx; 
+}
+
+.wxk-cover {   
+  margin-top: 26rpx;                   
+  margin-left: 20rpx;
+  width: 150rpx;
+  height: 130rpx;
+  border-radius: 6%;
+}
+
+.wxk-content {
+  width: 48%;
+  height: auto;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  margin-left: 28rpx;
+}
+
+.wxk-title {
+  width: 100%;
+  font-size: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 26rpx;
+  font-weight: bold;
+}
+
+.wxk-prize {
+  font-size: 20rpx;
+  overflow: hidden;
+  margin-top: 11rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #747474;
+}
+
+.wxk-bottom {
+  font-size: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 11rpx;
+  color: #747474;
+}
+
+.wxk-manjian {
+  font-size: 20rpx;
+  overflow: hidden;
+  margin-top: 11rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #747474;
+  margin-bottom: 16rpx;
+}
+.wxk-right {
+  width: 32%;
+  height: auto;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  margin-right: 17rpx;
+}
+
+.wxk-tit {
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 42rpx;
+}
+
+.wxk-pri {
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  align-items: center;
+  margin-top: 5rpx;
+}
+
+.wxk-pic {
+  width: 34rpx;
+  height: 34rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.wxk-text-item {
+  width: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 21rpx;
+  overflow: hidden;
+  margin-left: 10rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.money-list {
+  display: flex;
+  flex-flow: row;
+  background-color: #fff;
+}
+
+.money-item_left {
+  font-size: 21rpx;
+  width: 45%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: center;
+  margin-right: 16rpx;
+}
+
+.money-item_right {
+  font-size: 21rpx;
+  width: 45%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: center;
+  margin-left: 16rpx;
+}
+
+
+.loading {
+  text-align: center;
+  line-height: 2;
+  margin-bottom: 20rpx;
+  font-size: 22rpx;
+  color: #696969;
+}
+.nearby .shop {
+  padding: 2rpx 0;
+  border-bottom: 1rpx solid #efefef;
+}

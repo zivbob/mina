@@ -1,0 +1,155 @@
+<block>
+  <view class="container">
+    <view class="header scrolled">
+      <view class="location ellipsis" bindtap="openAddress">
+        <image class="icon" src="/imgs/index/icon_location.png" /> {{address}}
+      </view>
+      <view class="search" bindtap="tapSearch">
+        <image class="icon" src="/imgs/index/icon_search.png" />
+        <i class="fa fa-home"></i>
+        输入商家、商品名
+      </view>
+    </view>
+
+    <view scroll-y="true" wx:if="{{flag}}">
+      <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="500">
+        <block wx:for="{{shopSlide}}" wx:key="id">
+          <swiper-item>
+            <image data-id="{{index}}" src="{{item.thumb}}" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <block wx:if="{{shopCategory.length!=0}}">
+        <view class="section section-big special">
+          <swiper class="section icons" indicator-dots="" autoplay="" interval="" duration="500">
+            <swiper-item wx:for="{{shopCategory}}" wx:for-item="list" data-id="{{list.index}}" wx:key="index">
+              <block wx:if="{{index==0}}">
+                <view class="icon">
+                  <image data-type="all" src="../../imgs/images/service.png" bindtap="tapRestuarant" />
+                  <text class="{{categoryFlag=='all'?'active':''}}">全部</text>
+                </view>
+              </block>
+              <view class="icon" wx:for="{{list}}" wx:for-item="icon" wx:key="id">
+                <image src="{{icon.thumb}}" data-type="{{icon.storeCategoryId}}" bindtap="tapRestuarant" />
+                <text class="{{categoryFlag==icon.storeCategoryId?'active':''}}">{{icon.title}}</text>
+              </view>
+            </swiper-item>
+          </swiper>
+        </view>
+      </block>
+
+      <view id="nearby" class="section section-big nearby">
+        <view class="title">附近商家</view> 
+        <view class="filters">
+          <view class="filter {{filterId==1?'active':''}}" data-id="1" bindtap="tapFilter">综合排序
+          </view>
+          <text style="color:#989898;line-height:80rpx;font-weight:100">|</text>
+          <view class="filter {{filterId==2?'active':''}}" data-id="2" bindtap="tapFilter">销量最高
+          </view>
+          <text style="color:#989898;line-height:80rpx;font-weight:100">|</text>
+          <view class="filter {{filterId==3?'active':''}}" data-id="3" bindtap="tapFilter">距离最近
+          </view>
+        </view>
+        <view>
+          <block wx:for="{{showShops}}" wx:key="id" wx:for-item="item">
+            <block wx:if="{{categoryFlag=='all'}}">
+              <view class="wxk-pic-word nearby" data-id="{{item.storeId}}" bindtap="goToDetailPage">
+                <view>
+                  <image class="wxk-cover" src="{{item.logo}}" />
+                  <block wx:for="{{count}}" wx:key="storeId" wx:for-item="store">
+                    <block wx:if="{{count[index].storeId == item.storeId}}">
+                      <block wx:if="{{count[index].count>0}}">
+                        <view class="count">{{count[index].count}}</view>
+                      </block>
+                    </block>
+                  </block>
+                </view>
+                <view class="wxk-content">
+                  <view class="wxk-title">{{item.title}}</view>
+                  <view class="wxk-prize">月售
+                    <block wx:if="{{item.totalSail==null||item.totalSail=='null'}}">
+                      <text style="color:red">0</text>
+                    </block>
+                    <block wx:else>
+                      <text style="color:red">{{item.totalSail}}</text>
+                    </block>单
+                  </view>
+                  <view class="money-list wxk-bottom">
+                    <view class="money-item_left">起送¥{{item.sendPrice}}
+                    </view>
+                    <view style="width:2%;font-size: 25rpx;color:#BEBEBE;margin-top:-6rpx">|</view>
+                    <view class="money-item_right">配送¥{{item.deliveryPrice}}
+                    </view>
+                  </view>
+                  <view class="wxk-prize">
+                    <image class="wxk-pic" src="../../imgs/index/manjian.png" />
+                    <text class='wxk-text-item'>满{{item.deliveryFreePrice}}元免配送费</text>
+                  </view>
+                  <view class="wxk-prize" wx:if="{{item.hotStr.length>1}}">
+                    <image class="wxk-pic" src="../../imgs/index/rexiao.png" />
+                    <text class='wxk-text-item'>{{item.hotStr}}</text>
+                  </view>
+                </view>
+                <view class="wxk-right">
+                  <block wx:if="{{item.distance!=null && item.distance!='null'&&item.distance!='0'&&item.distance!=0}}">
+                    <view class="wxk-tit">{{item.distance}}km</view>
+                  </block>
+                  <view class="wxk-pri">送达 {{item.deliveryTime}}分钟</view>
+                </view>
+              </view>
+              <view class="shop" />
+            </block>
+
+            <block wx:if="{{categoryFlag==item.cid}}">
+              <view class="wxk-pic-word nearby" data-id="{{item.storeId}}" bindtap="goToDetailPage">
+                <view>
+                  <image class="wxk-cover" src="{{item.logo}}" />
+                  <block wx:for="{{count}}" wx:key="storeId" wx:for-item="store">
+                    <block wx:if="{{count[index].storeId == item.storeId}}">
+                      <block wx:if="{{count[index].count>0}}">
+                        <view class="count">{{count[index].count}}</view>
+                      </block>
+                    </block>
+                  </block>
+                </view>
+                <view class="wxk-content">
+                  <view class="wxk-title">{{item.title}}</view>
+                  <view class="wxk-prize">月售
+                    <block wx:if="{{item.totalSail==null||item.totalSail=='null'}}">
+                      <text style="color:red">0</text>
+                    </block>
+                    <block wx:else>
+                      <text style="color:red">{{item.totalSail}}</text>
+                    </block>单</view>
+                  <view class="money-list wxk-bottom">
+                    <view class="money-item_left">起送¥{{item.sendPrice}}
+                    </view>
+                    <view style="width:2%;font-size: 25rpx;color:#BEBEBE;margin-top:-6rpx">|</view>
+                    <view class="money-item_right">配送¥{{item.deliveryPrice}}
+                    </view>
+                  </view>
+                  <view class="wxk-prize">
+                    <image class="wxk-pic" src="../../imgs/index/manjian.png" />
+                    <text class='wxk-text-item'>满{{item.deliveryFreePrice}}元免配送费</text>
+                  </view>
+                  <view class="wxk-prize" wx:if="{{item.hotStr.length>1}}">
+                    <image class="wxk-pic" src="../../imgs/index/rexiao.png" />
+                    <text class='wxk-text-item'>{{item.hotStr}}</text>
+                  </view>
+                </view>
+                <view class="wxk-right">
+                  <block wx:if="{{item.distance!=null && item.distance!='null'&&item.distance!='0'&&item.distance!=0}}">
+                    <view class="wxk-tit">{{item.distance}}km</view>
+                  </block>
+                  <view class="wxk-pri">送达 {{item.deliveryTime}}分钟</view>
+                </view>
+              </view>
+              <view class="shop" />
+            </block>
+          </block>
+        </view>
+      </view>
+      <view class="loading">{{showNoMore}}</view>
+    </view>
+  </view>
+</block>
